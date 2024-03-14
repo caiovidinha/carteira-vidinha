@@ -113,11 +113,44 @@ converter.addEventListener('click', ()=>{
 })
 
 receita.addEventListener('click', ()=> {
-    console.log(saldoEmDolares)
-    console.log(parseFloat(dolar.innerHTML.replace('USD ','').replace(',','.')))
-    // location.reload()
+    let receitaV = parseFloat(dolar.innerHTML.replace('USD ','').replace(',','.'))
+    let novoSaldo = saldoEmDolares + receitaV
+    let post = {
+        saldo: novoSaldo
+    }
+    fetch('https://hooks.zapier.com/hooks/catch/11052334/30qjjny/',
+    {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(post),
+    })
+    receita.innerText = 'Carregando...'
+    setTimeout(()=>{
+        location.reload()
+    },3000)
 })
 
 despesa.addEventListener('click', ()=> {
-    location.reload()
+    let despesaV = parseFloat(dolar.innerHTML.replace('USD ','').replace(',','.'))
+    let novoSaldo = saldoEmDolares - despesaV
+    let post = {
+        saldo: novoSaldo
+    }
+    fetch('https://hooks.zapier.com/hooks/catch/11052334/30qjjny/',
+    {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(post),
+    })
+    despesa.innerText = 'Carregando...'
+    setTimeout(()=>{
+        location.reload()
+    },3000)
+    
 })
