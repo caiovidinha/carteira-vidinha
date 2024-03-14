@@ -9,9 +9,43 @@ var brl_usd = 5.1443
 // brl = clp / {brl_clp} || clp = brl * {brl_clp} 
 var brl_clp = clp_usd/brl_usd
 
-const saldoEmDolares = 4000.00
-const saldoEmReais = saldoEmDolares * brl_usd
-const saldoEmPesos = saldoEmDolares * clp_usd
+
+let SHEET_ID = '1U9FwQ2BaQMYyckjALWL4LrzGFx2CNP0sRDaIbszBLcY'
+    let SHEET_TITLE = 'saldo'
+    let SHEET_RANGE = 'A1:A2'
+
+    let FULL_URL =
+        'https://docs.google.com/spreadsheets/d/' +
+        SHEET_ID +
+        '/gviz/tq?sheet=' +
+        SHEET_TITLE +
+        '&range=' +
+        SHEET_RANGE
+
+const getSaldos = async () => {
+    fetch(FULL_URL)
+        .then((res) => res.text())
+        .then((rep) => {
+            let data = JSON.parse(rep.substr(47).slice(0, -2))
+            setSaldos(data.table.rows[0].c[0].v)
+        })
+} 
+getSaldos()
+
+let saldoEmDolares = 0
+let saldoEmReais = 0
+let saldoEmPesos = 0
+
+const setSaldos = (valor) =>{
+    saldoEmDolares = valor
+    moedaTopo.innerHTML = 'USD'
+    saldo.innerHTML = saldoEmDolares.toFixed(2).toString().replace('.',',')
+    flag.innerHTML = '🇺🇸'
+    saldoEmReais = saldoEmDolares * brl_usd
+    saldoEmPesos = saldoEmDolares * clp_usd
+}
+
+
 
 const flag = document.querySelector('#flag')
 const saldo = document.querySelector('#saldo')
@@ -79,7 +113,9 @@ converter.addEventListener('click', ()=>{
 })
 
 receita.addEventListener('click', ()=> {
-    location.reload()
+    console.log(saldoEmDolares)
+    console.log(parseFloat(dolar.innerHTML.replace('USD ','').replace(',','.')))
+    // location.reload()
 })
 
 despesa.addEventListener('click', ()=> {
