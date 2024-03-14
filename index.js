@@ -23,9 +23,7 @@ let SHEET_ID = '1U9FwQ2BaQMYyckjALWL4LrzGFx2CNP0sRDaIbszBLcY'
         SHEET_RANGE
 
 const getSaldos = async () => {
-    fetch(FULL_URL, {
-        mode:'no-cors'
-    })
+    fetch(FULL_URL)
         .then((res) => res.text())
         .then((rep) => {
             let data = JSON.parse(rep.substr(47).slice(0, -2))
