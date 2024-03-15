@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
 </head>
+<style type="text/css">
+#valor::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+#valor {
+    -moz-appearance: textfield;
+}
+
+</style>
 <body class="h-screen w-full bg-gray-50 font-[Asap]">
     <div class="header w-full h-[10%] flex justify-between items-center bg-black">
         <h1 class="text-2xl md:text-4xl text-white md:ml-[25%] ml-5">Carteira <p class="text-lg text-gray-100">Caio V.</p></h1>
@@ -29,7 +39,7 @@
         </p>
         <div class="flex flex-row">
             <div class="bg-gray-200 w-16 h-14 md:h-20 p-3 text-xl outline-none rounded-l-lg" id="display-currency">CLP</div>
-            <input type="text" name="valor" id="valor" placeholder="0,00" class="bg-gray-100 w-full h-14 md:h-20 p-3 text-xl outline-none rounded-r-lg rounded-none md:mr-5 mr-2">
+            <input type="number" name="valor" id="valor" placeholder="0,00" class="bg-gray-100 w-full h-14 md:h-20 p-3 text-xl outline-none rounded-r-lg rounded-none md:mr-5 mr-2">
             <button id="converter" class="w-48 bg-yellow-400 active:bg-yellow-600 rounded-lg text-md md:hover:text-2xl duration-200 transition-all text-black font-semibold md:ml-5">Converter</button>
         </div>
     </div>
