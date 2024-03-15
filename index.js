@@ -113,8 +113,9 @@ converter.addEventListener('click', ()=>{
 })
 
 receita.addEventListener('click', ()=> {
-    let receitaV = dolar.innerHTML.replace('USD ','')
+    let receitaV = parseFloat(dolar.innerHTML.replace('USD ','').replace(',','.'))
     let novoSaldo = saldoEmDolares + receitaV
+    novoSaldo = novoSaldo.toFixed(2).toString().replace('.',',')
     let post = {
         saldo: novoSaldo
     }
@@ -134,8 +135,9 @@ receita.addEventListener('click', ()=> {
 })
 
 despesa.addEventListener('click', ()=> {
-    let despesaV = dolar.innerHTML.replace('USD ','')
+    let despesaV = parseFloat(dolar.innerHTML.replace('USD ','').replace(',','.'))
     let novoSaldo = saldoEmDolares - despesaV
+    novoSaldo = novoSaldo.toFixed(2).toString().replace('.',',')
     let post = {
         saldo: novoSaldo
     }

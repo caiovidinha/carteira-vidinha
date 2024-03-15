@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Carteira - Caio</title>
+    <title>Carteira - Vidinha</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +22,13 @@
         <p class="text-3xl pb-3 flex justify-between items-center">Moeda: 
             
             <select name="moeda" id="moeda" class="w-full ml-10">
+                <option value="CLP" class="text-md">🇨🇱 CLP</option>
                 <option value="USD" class="text-md">🇺🇸 USD</option>
                 <option value="BRL" class="text-md">🇧🇷 BRL</option>
-                <option value="CLP" class="text-md">🇨🇱 CLP</option>
             </select>
         </p>
         <div class="flex flex-row">
-            <div class="bg-gray-200 w-16 h-14 md:h-20 p-3 text-xl outline-none rounded-l-lg" id="display-currency">USD</div>
+            <div class="bg-gray-200 w-16 h-14 md:h-20 p-3 text-xl outline-none rounded-l-lg" id="display-currency">CLP</div>
             <input type="text" name="valor" id="valor" placeholder="0,00" class="bg-gray-100 w-full h-14 md:h-20 p-3 text-xl outline-none rounded-r-lg rounded-none md:mr-5 mr-2">
             <button id="converter" class="w-48 bg-yellow-400 active:bg-yellow-600 rounded-lg text-md md:hover:text-2xl duration-200 transition-all text-black font-semibold md:ml-5">Converter</button>
         </div>
